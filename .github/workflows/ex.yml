@@ -21,7 +21,9 @@ jobs:
           pip install pytest
           pip install pytest-cov
       - name: run coverage
-        run: pytest --cov --cov-report=html
+        run: |
+          ls
+          pytest --cov --cov-report=html
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         with:
