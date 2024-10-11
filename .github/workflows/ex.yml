@@ -1,20 +1,16 @@
-name: exercice actions
+name: testFile
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: install python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: install dependency
         run: |
           pip install -r requirements.txt
@@ -22,9 +18,7 @@ jobs:
           pip install pytest-cov
       - name: run coverage
         run: |
-          ls
           pytest --cov --cov-report=html
-          ls
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         with:
